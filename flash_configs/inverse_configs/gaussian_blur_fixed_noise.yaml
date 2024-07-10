@@ -1,0 +1,8 @@
+operator:
+    type: gaussian_blur
+    kernel_size: 61
+    scheduling: linear
+    max_std: 3.0
+noise: 
+    sigma_min: 0.05
+    sigma_max: 0.05

@@ -1,0 +1,7 @@
+[submodule "latent-diffusion"]
+	path = ldm
+	url = https://github.com/CompVis/latent-diffusion
+	ignore = dirty
+[submodule "bkse"]
+	path = bkse
+	url = https://github.com/VinAIResearch/blur-kernel-space-exploring

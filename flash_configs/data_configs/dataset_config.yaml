@@ -1,0 +1,21 @@
+celeba256: 
+    path: '/data/datasets/celebaHQ_256x256/celeba_hq_256'
+    pl_module_class: 'pl_modules.image_data_module.CelebaDataModule'
+    dataset_class: 'data_utils.image_data.CelebaDataset'
+    train_split: 'data_utils/celebahq_train_ids.txt'
+    val_split: 'data_utils/celebahq_val_ids.txt'
+    test_split: 'data_utils/celebahq_test_ids.txt'
+ffhq: 
+    path: '/data/datasets/ffhq/images256x256'
+    pl_module_class: 'pl_modules.image_data_module.FFHQDataModule'
+    dataset_class: 'data_utils.image_data.FFHQDataset'
+    train_split: 'data_utils/ffhq_train_ids.txt'
+    val_split: 'data_utils/ffhq_val_ids.txt'
+    test_split: 'data_utils/ffhq_test_ids.txt'
+lsun_bedroom:
+    path: '/data/datasets/lsun/bedroom/train_flat'
+    pl_module_class: 'pl_modules.image_data_module.LSUNBedroomDataModule'
+    dataset_class: 'data_utils.image_data.LSUNBedroomDataset'
+    train_split: 'data_utils/bedrooms_train_ids.txt'
+    val_split: 'data_utils/bedrooms_val_ids.txt'
+    test_split: 'data_utils/bedrooms_test_ids.txt'

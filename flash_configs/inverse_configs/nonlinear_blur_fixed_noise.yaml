@@ -1,0 +1,5 @@
+operator:
+    type: nonlinear_blur
+noise: 
+    sigma_min: 0.05
+    sigma_max: 0.05

@@ -1,0 +1,23 @@
+adaptation:
+  init_mode: sev_enc_with_corr
+  corr_mult: 1.0
+  sev_enc_model_class: flash_diffusion.severity_encoder.LDMSevEncoder
+  sev_enc_ckpt_path: 'checkpoints/sevenc_nl_blur_lsun_bedroom.ckpt'
+baseline:
+  class: 'samplers.latent_recon.ReSample'
+  ldm_ckpt_path: 'ldm/models/ldm/lsun_beds256/model.ckpt'
+  ddim_steps: 500
+  ddim_eta: 1.0
+  data_consistency:
+      z0_correct_last_n: 1
+      z0_pred_corr_every_n: 10
+      z0_pred_corr_init_mode: x_init
+      z0_pred_corr_lam: 1.0
+      z0_pred_corr_steps: 100
+      resample_step: 1000
+data:
+    dataset: 'lsun_bedroom'
+    split: 'test'
+    num_images: 200
+    fixed_severity: -1
+    degradation_config: 'flash_configs/inverse_configs/nonlinear_blur_fixed_noise.yaml'

@@ -1,0 +1,23 @@
+adaptation:
+  init_mode: sev_enc_with_corr
+  corr_mult: 1.2
+  sev_enc_model_class: flash_diffusion.severity_encoder.LDMSevEncoder
+  sev_enc_ckpt_path: 'checkpoints/sevenc_gblur_celeba256.ckpt'
+baseline:
+  class: 'samplers.latent_recon.ReSample'
+  ldm_ckpt_path: 'ldm/models/ldm/celeba256/model.ckpt'
+  ddim_steps: 500
+  ddim_eta: 1.0
+  data_consistency:
+      z0_correct_last_n: 1
+      z0_pred_corr_every_n: 10
+      z0_pred_corr_init_mode: x_init
+      z0_pred_corr_lam: 1.0
+      z0_pred_corr_steps: 100
+      resample_step: 2000
+data:
+    dataset: 'ffhq'
+    split: 'test'
+    num_images: 200
+    fixed_severity: 1.0
+    degradation_config: 'flash_configs/inverse_configs/gaussian_blur_fixed_noise.yaml'

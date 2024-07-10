@@ -1,0 +1,9 @@
+operator:
+    type: inpainting
+    mask_type: random
+    mask_min_ratio: 0.2
+    mask_max_ratio: 1.0
+    scheduling: linear
+noise: 
+    sigma_min: 0.05
+    sigma_max: 0.05

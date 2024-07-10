@@ -1,0 +1,17 @@
+adaptation:
+  init_mode: sev_enc_with_corr
+  corr_mult: 1.0
+  sev_enc_model_class: flash_diffusion.severity_encoder.LDMSevEncoder
+  sev_enc_ckpt_path: 'checkpoints/sevenc_gblur_celeba256.ckpt'
+baseline:
+  class: 'samplers.latent_recon.PSLD'
+  ldm_ckpt_path: 'ldm/models/ldm/celeba256/model.ckpt'
+  data_consistency:
+    dc_step: 2.0
+    ae_weight: 0.2
+data:
+    dataset: 'ffhq'
+    split: 'test'
+    num_images: 200
+    fixed_severity: -1
+    degradation_config: 'flash_configs/inverse_configs/gaussian_blur_fixed_noise.yaml'
