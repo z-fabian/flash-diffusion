@@ -1,0 +1,12 @@
+einops>=0.6.1
+lightning>=2.3.3
+lpips
+matplotlib
+numpy
+PyYAML
+pytorch-lightning==1.8.6
+taming-transformers-rom1504==0.0.6
+torch>=2.1.0
+torchvision
+torch-fidelity>=0.3.0
+wandb

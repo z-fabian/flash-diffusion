@@ -6,4 +6,3 @@ gdown --id 1KDY9NuhXW3UVRzz5toek3z3nYNTsJ4Kn -O checkpoints/sevenc_gblur_celeba2
 gdown --id 17d1VsNQS95-noq_uZO1uzqQOw_DsyWy4 -O checkpoints/sevenc_nl_blur_celeba256.ckpt
 gdown --id 1TsvxKIT6Y4LsReWouAPDbxp90cn0ZGS5 -O checkpoints/sevenc_random_inpaint_celeba256.ckpt
 gdown --id 1wtZjTZcUTUrHIagLaSWjNPJ_v1dahQay -O checkpoints/sevenc_random_inpaint_lsun_bedroom.ckpt
-
