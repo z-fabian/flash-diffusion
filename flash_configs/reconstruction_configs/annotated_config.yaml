@@ -1,0 +1,44 @@
+adaptation: # These setting control FlashDiffusion behavior.
+  init_mode: sev_enc_with_corr # Method to initialize the latent. 
+  # Options:
+  #'sev_enc_with_corr': default, noise correction + stochastic encoding as described in the main paper
+  #'sev_enc_ddim_inv': adaptive DDIM encoding (see Appendix E). This is still experimental. Need to set ddim_steps and ddim_eta.
+  corr_mult: 1.2 # Noise correction term $c$ in the paper. A typical value of 1.0 - 1.2 works for most tasks.
+  sev_enc_model_class: flash_diffusion.severity_encoder.LDMSevEncoder # Severity encoder class. Only need to change if you want to use your custom severity encoder.
+  sev_enc_ckpt_path: 'checkpoints/sevenc_gblur_celeba256.ckpt' # Path to the severity encoder checkpoint.
+baseline: # These settings control the baseline solver.
+  class: 'samplers.latent_recon.ReSample' # Baseline solver class. We implemented LDPS, GML-DPS, PSLD and ReSample. You can implement your own solver by subclassing samplers.latent_recon.LatentSampler.
+  ldm_ckpt_path: 'ldm/models/ldm/celeba256/model.ckpt' # Path to the LDM checkpoint.
+  ddim_steps: 500 # Number of DDIM steps. If you use DDPM sampling, remove this line.
+  ddim_eta: 1.0 # Controls DDIM stochasticity.
+  data_consistency: # Settings that control data consistency updates 
+      # These are the hyperparameters of LDPS-like data consistency used in LDPS, and with some additional terms in GML-DPS and PSLD. This update is applied to noisy iterates.
+      dc_step: 1.0 # Controls the step size of the LDPS data consistency update. The higher the more we rely on the measurements.
+      dc_freq: 1.0 # Frequency of LDPS data consistency updates in [0.0, 1.0]. Set to 0.0 to turn off.
+      ae_weight: 0.2 # Weight of the additional term in GML-DPS and PSLD.
+      use_psld: False # If True and ae_weight is set, use PSLD-like data consistency. Otherwise, use GML-DPS-like data consistency.
+      # These are the hyperparameters of ReSample-like hard data consistency applied to the posterior mean estimate.
+      z0_correct_last_n: 1 # Number of consecutive steps at the end of the sampling process to apply hard data consistency.
+      z0_pred_corr_every_n: 10 # This sets the frequency of hard data consistency updates.
+      z0_pred_corr_init_mode: x_init # Initialization technique for solving the optimization problem for hard data consistency.
+      # Options:
+      #'x_init': initialize with the current posterior mean before correction.
+      # 'zeros': initialize with zeros.
+      # 'randn': initialize with random Gaussian.
+      z0_pred_corr_lam: 1.0 # Controls the weighting factor in hard data consistency. Has minor effect on the results and can be set to 0.
+      z0_pred_corr_steps: 100 # Max number of optimizer steps used to minimize the hard data consistency objective.
+      resample_step: 2000 # Hyperparameter for stochastic resampling.
+      z0_pred_corr_domain: 'staged' # Specifies the domain of the optimization problem for hard data consistency.
+      # It can be scheduled in 3 stages: 'chaotic' (early in diffusion process), 'semantic', 'refinement' (final stage of reverse diffusion).
+      # Can be set to either 'no_prox' (turned off), 'image' or 'latent' domain. Latent domain optimization has higher compute cost.
+      # Options:
+      # 'staged': default following the ReSample paper. This means {'chaotic': 'no_prox', 'semantic': 'image', 'refinement': 'latent'}
+      # 'image': optimize in the image domain.
+      # 'latent': optimize in the latent domain.
+      #  Any combination of the above using a dictionary defining the domain for each stage.
+data:
+    dataset: 'ffhq' # Specifies the dataset to use. Options: 'celeba256', 'ffhq', 'lsun_bedroom'
+    split: 'test' # Can be set to either 'val' or 'test'.
+    num_images: 200 # Number of images to reconstruct from the split.
+    fixed_severity: -1 # Can be used to manually fix the degradation severity. -1 means random severity, any value in [0, 1] will use fixed degradation severity for all images. 
+    degradation_config: 'flash_configs/inverse_configs/gaussian_blur_fixed_noise.yaml' # Config file that specifies the degradation parameters.
