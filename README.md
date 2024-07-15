@@ -7,7 +7,7 @@ This is the official repository for the paper [Adapt and Diffuse: Sample-adaptiv
 > *ICML 2024*  
 > <sup>\*</sup> equal contribution
 
-We introduce *FlashDiffusion*, a reconstruction framework that automatically adapts inference time to the corruption level of the input. We leverage a *severity encoder* that estimates the corruption level in the latent space of autoencoders. Based on the estimated severity, we adjust the sampling trajectory of a latent diffusion process. FlashDiffusion acts as a wrapper that can be added to any latent diffusion-based inverse problem solver. FlashDiffusion enhances the baseline solver with sample-adaptivity and accelerated inference (up to a factor of x10).
+We introduce *FlashDiffusion*, a reconstruction framework that automatically adapts inference time to the corruption level of the input. We leverage a *severity encoder* that estimates the corruption level in the latent space of autoencoders. Based on the estimated severity, we adjust the sampling trajectory of a latent diffusion process. FlashDiffusion acts as a wrapper that can be added to any latent diffusion-based inverse problem solver. FlashDiffusion enhances the baseline solver with sample-adaptivity and accelerated inference (up to a factor of 10x).
 
 ![](assets/flash_diffusion.gif)
 
