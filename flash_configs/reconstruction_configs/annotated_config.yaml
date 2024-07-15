@@ -10,7 +10,7 @@ baseline: # These settings control the baseline solver.
   class: 'samplers.latent_recon.ReSample' # Baseline solver class. We implemented LDPS, GML-DPS, PSLD and ReSample. You can implement your own solver by subclassing samplers.latent_recon.LatentSampler.
   ldm_ckpt_path: 'ldm/models/ldm/celeba256/model.ckpt' # Path to the LDM checkpoint.
   ddim_steps: 500 # Number of DDIM steps. If you use DDPM sampling, remove this line.
-  ddim_eta: 1.0 # Controls DDIM stochasticity.
+  ddim_eta: 1.0 # Controls DDIM stochasticity. (0.0 for deterministic DDIM, 1.0 for a DDPM-like sampling)
   data_consistency: # Settings that control data consistency updates 
       # These are the hyperparameters of LDPS-like data consistency used in LDPS, and with some additional terms in GML-DPS and PSLD. This update is applied to noisy iterates.
       dc_step: 1.0 # Controls the step size of the LDPS data consistency update. The higher the more we rely on the measurements.
@@ -22,7 +22,7 @@ baseline: # These settings control the baseline solver.
       z0_pred_corr_every_n: 10 # This sets the frequency of hard data consistency updates.
       z0_pred_corr_init_mode: x_init # Initialization technique for solving the optimization problem for hard data consistency.
       # Options:
-      #'x_init': initialize with the current posterior mean before correction.
+      # 'x_init': initialize with the current posterior mean before correction.
       # 'zeros': initialize with zeros.
       # 'randn': initialize with random Gaussian.
       z0_pred_corr_lam: 1.0 # Controls the weighting factor in hard data consistency. Has minor effect on the results and can be set to 0.
