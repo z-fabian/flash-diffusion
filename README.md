@@ -124,7 +124,7 @@ We provide an example script to train a severity encoder from LDM autoencoder in
 ```bash
 bash ./scripts/train_celeba256_gblur_varying.sh
 ```
-We tested the training code on 8xA6000 and 8xTitan RTX GPUs.
+We tested the training code on 8x RTX A6000 (48GB) and 8x Titan RTX (24GB) GPUs.
 
 ## Pretrained severity encoders
 Each checkpoint is approximately 85MB.
