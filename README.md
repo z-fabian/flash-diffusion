@@ -130,12 +130,12 @@ We tested the training code on 8x RTX A6000 (48GB) and 8x Titan RTX (24GB) GPUs.
 Each checkpoint is approximately 85MB.
 | Train dataset      | Operator  | Link |
 | ------------ | ---------- | ---- |
-| CelebA-HQ | Gaussian blur + noise | [Download](https://drive.google.com/file/d/1KDY9NuhXW3UVRzz5toek3z3nYNTsJ4Kn/view?usp=sharing) |
-| CelebA-HQ |Nonlinear blur + noise | [Download](https://drive.google.com/file/d/17d1VsNQS95-noq_uZO1uzqQOw_DsyWy4/view?usp=sharing) |
-| CelebA-HQ | Random inpainting + noise | [Download](https://drive.google.com/file/d/1TsvxKIT6Y4LsReWouAPDbxp90cn0ZGS5/view?usp=sharing) |
-| LSUN Bedrooms | Gaussian blur + noise | [Download](https://drive.google.com/file/d/1dHEPyKhZOUxwoRK_R6DuBWhi-5cBTVV9/view?usp=sharing) |
-| LSUN Bedrooms |Nonlinear blur + noise | [Download](https://drive.google.com/file/d/1W0e5talN1UpOPNHYoFuJEK6dX8rimF4X/view?usp=sharing) |
-| LSUN Bedrooms | Random inpainting + noise | [Download](https://drive.google.com/file/d/1wtZjTZcUTUrHIagLaSWjNPJ_v1dahQay/view?usp=sharing) |
+| CelebA-HQ | Gaussian blur + noise | [Download](https://drive.google.com/file/d/1abyzuaskU2uuNqEldfGkFtn7VqormIGl/view?usp=sharing) |
+| CelebA-HQ |Nonlinear blur + noise | [Download](https://drive.google.com/file/d/1mC508WeW5os7R6wSnuvtkdfUANTYQD-t/view?usp=sharing) |
+| CelebA-HQ | Random inpainting + noise | [Download](https://drive.google.com/file/d/10p-1KFRIQp5mxnZHDNWi-rBHMDHQ6e6z/view?usp=sharing) |
+| LSUN Bedrooms | Gaussian blur + noise | [Download](https://drive.google.com/file/d/1n8_DJiLhe1z-qHJl23qD5JLCZS76xCFl/view?usp=sharing) |
+| LSUN Bedrooms |Nonlinear blur + noise | [Download](https://drive.google.com/file/d/1uJhVnIS2nr9ZQ8q2Ezc57htmaOvWa6R9/view?usp=sharing) |
+| LSUN Bedrooms | Random inpainting + noise | [Download](https://drive.google.com/file/d/1wpyfttgpNyQtur8XwnTFQxZd39narwsa/view?usp=sharing) |
 
 ## Citation
 
